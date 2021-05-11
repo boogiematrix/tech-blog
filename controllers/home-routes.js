@@ -76,3 +76,5 @@ router.get('/newpost', withAuth, (req, res) => {
     res.render('newpost');
     return;
 })
+
+module.exports = router;

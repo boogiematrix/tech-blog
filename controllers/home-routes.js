@@ -35,7 +35,7 @@ router.get('/dashboard', withAuth, (req, res) => {
     try {
         const postData = await Post.findAll({
             where: {
-                user_id: req.session.user_id,
+                user_id: req.session.userId,
             }
         });
         if (!postData) {
@@ -43,12 +43,10 @@ router.get('/dashboard', withAuth, (req, res) => {
             return;
         }
         const posts = postData.map((post) => post.get({ plain: true }));
-        res.render('fullblog', posts);
+        res.render('dashboard', posts);
     } catch (err) {
         res.status(500).json(err);
     };
-    res.render('dashboard');
-    return;
 });
 
 router.get('/login', (req, res) => {

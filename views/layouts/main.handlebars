@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Tech Blog</h1>
+    </header>
+    <nav>
+        <a>Homepage</a>
+        <a>Dashboard</a>
+        {{#if loggedIn}}
+        <button>Log Out</button>
+        {{else}}
+        <a>Log In</a>
+        {{/if}}
+    </nav>
+    <main>
+        {{{body}}}
+    </main>
+</body>
+</html>

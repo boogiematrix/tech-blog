@@ -1,7 +1,6 @@
 const User = require('./User');
 const Comment = require('./Comment');
 const Post = require('./Post');
-const { POINT_CONVERSION_HYBRID } = require('constants');
 
 User.hasMany(Post, {
     foreignKey: user_id,

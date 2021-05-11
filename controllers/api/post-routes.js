@@ -35,12 +35,12 @@ router.put('/:id', withAuth, async (req, res) => {
 
 router.delete('/:id', withAuth, async (req, res) => {
     try {
-        Comment.destroy({
+        Post.destroy({
             where: {
                 id: req.params.id
             }
         });
-        res.status(204).send('Comment deleted')
+        res.status(204).send('Post deleted')
     } catch (err) {
         res.json(err)
     }

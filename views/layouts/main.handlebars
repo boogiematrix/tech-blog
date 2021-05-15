@@ -14,9 +14,11 @@
         <a href='/'>Homepage</a>
         <a href='/dashboard'>Dashboard</a>
         {{#if loggedIn}}
+        <a href='/newpost'>New Post</a>
         <button>Log Out</button>
         {{else}}
-        <a href='login'>Log In</a>
+        <a href='/login'>Log In</a>
+        <a href='/signup'>Sign Up</a>
         {{/if}}
     </nav>
     <main>

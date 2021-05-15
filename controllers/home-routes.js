@@ -1,23 +1,27 @@
 const router = require('express').Router();
-const withAuth = require('../../utils/auth');
-const { Post, Comment, User} = require('../models')
+const withAuth = require('../utils/auth');
+const { Post, Comment, User} = require('../models/')
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     try {
-        const postData = await Post.findAll();
+        const postData = await Post.findAll({
+            include: [User]
+        });
+        
         if (!postData) {
-            res.status(404).json();
+            res.status(403).json();
             return;
         }
         const posts = postData.map((post) => post.get({ plain: true }));
-        res.render('fullblog', posts);
+        res.render('fullblog', { posts });
     } catch (err) {
+        console.log(err)
         res.status(500).json(err);
     };
 
 });
 
-router.get('/post/:id', (req, res) => {
+router.get('/post/:id', async (req, res) => {
     try {
         const postData = await Post.findByPK(req.params.id);
         if (!postData) {
@@ -31,7 +35,7 @@ router.get('/post/:id', (req, res) => {
     }
 });
 
-router.get('/dashboard', withAuth, (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
             where: {

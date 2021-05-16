@@ -3,10 +3,10 @@
 {{#each post}}
     <div class="card">
         <div class="card-title d-flex flex-row justify-space-between">
-            <h2>
+            <div class="p-1">
                 <a href="/posts/{{id}}">{{title}}</a>
-            </h2>
-            <div>
+            </div>
+            <div class="p-1 text-end">
                 Posted by {{user.username}} on {{format_date createdAt}}
             </div>
             <div class="card-body">{{content}}</div>

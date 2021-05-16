@@ -1,14 +1,16 @@
 //post delete and put
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
-const Post = require('../../models/Post');
+const { Post } = require('../../models');
 
 router.post('/', withAuth, async (req, res) => {
     try {
+        console.log('here')
         const newPost = await Post.create({
-            content: req.body.content,
+            content: req.body.body,
             user_id: req.session.userId,
             title: req.body.title,
+            createdAt: req.session.createdAt
         })
         res.json(newPost)
     } catch (err) {
@@ -20,7 +22,7 @@ router.put('/:id', withAuth, async (req, res) => {
     try {
         const updatedPost = await Post.update({
             title: req.body.title,
-            content: req.body.content,
+            content: req.body.body,
         },
             {
                 where: {

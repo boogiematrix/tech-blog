@@ -1,8 +1,8 @@
 const comment = async function (event) {
     event.preventDefault();
 
-    const postId = document.getElementById('#post-id').value;
-    const body = document.getElementById('#content-id').value;
+    const postId = document.getElementById('post-id').value;
+    const body = document.getElementById('content-id').value;
 
     if (body) {
         await fetch('/api/comments', {

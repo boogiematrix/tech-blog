@@ -5,7 +5,8 @@ const { Post, Comment, User} = require('../models/')
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
-            include: [User]
+            include: [User],
+            subQuery: false,
         });
         
         if (!postData) {
@@ -26,31 +27,34 @@ router.get('/', async (req, res) => {
 
 router.get('/posts/:id', async (req, res) => {
     try {
-        console.log(req.params.id)
-        const postData = await Post.findByPK(req.params.id, {
-            include: [User]
+        const postData = await Post.findByPk(req.params.id, {
+            include: [User, Comment],
+            subQuery: false,
         });
-        if (!postData) {
-            res.status(404).json({ message: 'No post with that id' });
-            return;
-        }
-        const post = postData.get({ plain: true });
-        res.render('onepost', {
-            post,
-            loggedIn: req.session.loggedIn,
-        })
-    } catch (err) {
 
+        if (postData) {
+            const post = postData.get({ plain: true });
+console.log(post)
+            res.render('onepost', {
+                post,
+                loggedIn: req.session.loggedIn,
+            });
+        } else {
+            res.status(404).end();
+        }
+    } catch (err) {
+        res.redirect('login');
     }
 });
 
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
+            include: [User],
             where: {
                 user_id: req.session.userId,
             }, 
-            include: [User]
+            subQuery: false,
         });
         if (!postData) {
             res.status(404).json();

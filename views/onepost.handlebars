@@ -3,7 +3,7 @@
         <div class="card-title flex-row justify-space-between">
             <h2>{{post.title}}</h2>
             <div>
-                Posted by {{post.User.username}} on {{format_date post.createdAt}}
+                Posted by {{post.user.username}} on {{format_date post.createdAt}}
             </div>
         </div>
         <div class="card-body">
@@ -11,20 +11,20 @@
         </div>
     </article>
 
-    {{#if post.Comments}}
+    {{#if post.comments}}
     <section class="card">
         <div class="card-title">
             <h3>Comments</h3>
         </div>
 
         <div class="card-body">
-            {{#each post.Comments}}
+            {{#each post.comments}}
             <div>
                 <p>
-                    {{body}}
+                    {{content}}
                 </p>
                 <p>
-                    &mdash; {{User.username}}, {{format_date createdAt}}
+                    &mdash; {{post.user.username}}, {{format_date createdAt}}
                 </p>
             </div>
             {{/each}}
@@ -40,7 +40,7 @@
         <div class="card-body">
             
             <div class="form-group">
-                <input type="hidden" name="post-id" value="{{post.id}}" id='post-id'/>
+                <input type="hidden" id='post-id' name="post-id" value="{{post.id}}"/>
             </div>
             
             <div class="form-group">

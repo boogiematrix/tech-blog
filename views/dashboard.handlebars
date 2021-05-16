@@ -8,7 +8,7 @@
                     <a href="/edit/{{id}}">{{title}}</a>
                 </h2>
                 <div>
-                    Posted by {{username}} on {{format_date createdAt}}
+                    Posted by {{user.username}} on {{format_date createdAt}}
                 </div>
                 <div class="card-body">{{content}}</div>
             </div>
@@ -16,4 +16,3 @@
         {{/each}}
     </div>
 </div>
-<script src="/js/dashboard.js"></script>

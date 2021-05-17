@@ -1,6 +1,6 @@
-<div class="row">
-    <article class="card">
-        <div class="card-title flex-row justify-space-between">
+<div class="row d-flex justify-content-evenly">
+    <article class="col card m-1">
+        <div class="card-title flex-row justify-space-between p-1">
             <h2>{{post.title}}</h2>
             <div>
                 Posted by {{post.user.username}} on {{format_date post.createdAt}}
@@ -12,8 +12,8 @@
     </article>
 
     {{#if post.comments}}
-    <section class="card">
-        <div class="card-title">
+    <section class="col card m-1">
+        <div class="card-title p-1">
             <h3>Comments</h3>
         </div>
 
@@ -32,8 +32,8 @@
     </section>
     {{/if}}
 
-    <form id="new-comment" class="card">
-        <div class="card-title">
+    <form id="new-comment" class="col card m-1">
+        <div class="card-title p-1">
             <h3>Add New Comment</h3>
         </div>
 

@@ -1,17 +1,26 @@
 <div class="row">
     <div class="col">
 {{#each post}}
-    <div class="card">
-        <div class="card-title d-flex flex-row justify-space-between">
-            <div class="p-1">
-                <a href="/posts/{{id}}">{{title}}</a>
+            <div class="card">
+                <div class="row card-header m-0">
+                    <div class="col d-flex">
+            
+                        <div class='p-1'>
+                            <a href="/posts/{{id}}">{{title}}</a>
+                        </div>
+                        <div class='p-1 justify-content-end'>
+                            Posted by {{user.username}} on {{format_date createdAt}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row card-body">
+                    <div class="col">
+            
+                        <div class="card-body">{{content}}</div>
+                    </div>
+                </div>
+            
             </div>
-            <div class="p-1 text-end">
-                Posted by {{user.username}} on {{format_date createdAt}}
-            </div>
-            <div class="card-body">{{content}}</div>
-        </div>
-    </div>
 {{/each}}
     </div>
 </div>

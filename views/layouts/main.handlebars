@@ -11,7 +11,7 @@
         <div class='row'>
             <div class='col'>
     
-                <header class='jumbotron'>
+                <header class='jumbotron bg-warning'>
                     <h1>Tech Blog</h1>
                 </header>
                     <nav class='navbar'>
@@ -19,7 +19,7 @@
                         <a href='/dashboard'>Dashboard</a>
                         {{#if loggedIn}}
                         <a href='/newpost'>New Post</a>
-                        <button id='logout-main'>Log Out</button>
+                        <button id='logout-main' class='btn btn-warning'>Log Out</button>
                         {{else}}
                         <a href='/login'>Log In</a>
                         <a href='/signup'>Sign Up</a>

@@ -3,25 +3,24 @@
     <div class="col">
         {{#each post}}
         <div class="card">
-            <div class="card-title d-flex  justify-space-between">
-                <div class="row">
-                    <div class="col">
+                <div class="row card-header m-0">
+                    <div class="col d-flex">
 
-                <div class='p-1 w-30'>
+                <div class='p-1'>
                     <a href="/edit/{{id}}">{{title}}</a>
                 </div>
-                <div class='p-1 text-end w-60'>
+                <div class='p-1 justify-content-end'>
                     Posted by {{user.username}} on {{format_date createdAt}}
                 </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row card-body">
                     <div class="col">
                 
-                <div class="">{{content}}</div>
+                <div class="card-body">{{content}}</div>
                     </div>
                 </div>
-            </div>
+            
         </div>
         {{/each}}
     </div>
